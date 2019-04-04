@@ -1,3 +1,6 @@
+/* eslint-disable indent */
+'use strict';
+
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -40,7 +43,7 @@ class LinkedList {
       this.insertFirst(item);
     } else {
       let currentNode = this.head;
-      while (currentNode.next != null) {
+      while (currentNode.next !== null) {
         currentNode = currentNode.next;
       }
       currentNode.next = new _Node(item, null);
@@ -75,7 +78,7 @@ class LinkedList {
     let currentNode = this.head;
     let previousNode = this.head;
 
-    while (currentNode != null && currentNode.value !== item) {
+    while (currentNode !== null && currentNode.value !== item) {
       previousNode = currentNode;
       currentNode = currentNode.next;
     }
@@ -107,7 +110,7 @@ function insertInSortedOrder(ll, item) {
 
   if (item < ll.head.value) {
     ll.head = new _Node(item, ll.head);
-    return sll;
+    return ll;
   }
   let previousNode = ll.head;
   while (currentNode.next !== null && currentNode.value < item) {
@@ -120,20 +123,169 @@ function insertInSortedOrder(ll, item) {
 
 function display(ll) {
   let currentNode = ll.head;
-  while (currentNode != null) {
+  while (currentNode !== null) {
     console.log(currentNode.value);
     currentNode = currentNode.next;
   }
 }
 
+function size(ll) {
+  if (!ll.head){
+    console.log(0);
+  }
+  else {
+    let count = 0;
+    let current = ll.head;
+    while (current !== null) {
+      current = current.next;
+      count++;
+    }
+    console.log(count);
+  }
+  
+}
+
+function isEmpty(ll){
+  if (!ll.head){
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+
+function findPrevious(ll, item) {
+  let currentNode = ll.head;
+  if (!ll.head || !ll.head.next) {
+    console.log(null);
+  }
+    
+  let previous = currentNode;
+
+  while (currentNode.value !== item) {
+    if (currentNode.next === null) {
+        
+      console.log(null);
+    } else {
+      previous = currentNode;
+      currentNode = currentNode.next;
+    }
+  }
+  console.log(previous);
+}
+
+function findLast(ll) {
+  let currentNode = ll.head;
+  if (!ll.head) {
+    console.log(null);
+  }
+    
+  let previous = currentNode;
+
+  while (currentNode !== null) {
+    
+    
+    previous = currentNode;
+    currentNode = currentNode.next;
+    
+  }
+  console.log(previous);
+}
+
+function removeDupes(lst) {
+  let current = lst.head;
+  while (current !== null) {
+    let newNode = current;
+    while (newNode.next !== null) {
+      if (newNode.next.value === current.value) {
+        newNode.next = newNode.next.next;
+      }
+      else {
+        newNode = newNode.next;
+      }
+    }
+    current = current.next;
+  }
+}
+
+// This function has a runtime complexity of O(n^2).  It removes any & all duplicate node in the linked list.
+
+
+function reverseList(ll) {
+  let reverseHead = null;
+  let current = ll.head;
+  while (current !== null) {
+    let tempNode = current.next;
+    current.next = reverseHead;
+    reverseHead = current;
+    current = tempNode;
+  }
+  ll.head = reverseHead;
+  return ll; 
+  
+}
+
+
+
+function thirdFromTheEnd (ll) {
+  let thirdHead = ll.head;
+  let end = ll.head.next.next;
+  while (end.next !== null){
+    thirdHead = thirdHead.next;
+    end = end.next;
+  }
+  return thirdHead.value;
+}
+
+function middleNode(ll){
+  if (!ll.head){
+    return null;
+  }
+  else {
+    let count = 0;
+    let current = ll.head;
+    while (current !== null) {
+      current = current.next;
+      count++;
+    }
+   current  = ll.head;
+   let halfway = Math.floor(count / 2);
+   while (halfway > 0) {
+     current = current.next;
+     halfway--;
+   }
+   return current;
+  }
+ 
+}
+
+function cycleList (ll) {
+  if(!ll.head){
+    return null;
+  }
+
+}
+
+  
+
+
+
 function main() {
-  SLL = new LinkedList();
-  SLL.insertFirst("C");
-  SLL.insertLast("D");
-  SLL.insertLast("F");
-  console.log(SLL.find("D"));
-  insertInSortedOrder(SLL, "E");
-  console.log(SLL.find("D"));
+  let SLL = new LinkedList();
+  SLL.insertFirst('C');
+  SLL.insertLast('D');
+  SLL.insertLast('A');
+  SLL.insertLast('D');
+  SLL.insertLast('F');
+  let CycleList = new LinkedList();
+  // size(SLL);
+  // findPrevious(SLL,'F');
+  // findLast(SLL);
+  display(SLL);
+  console.log(middleNode(SLL));
+  
+  display(SLL);
+  // removeDupes(SLL);
+  // display(SLL);
 }
 
 main();
