@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-'use strict';
+"use strict";
 
 class _Node {
   constructor(value, next) {
@@ -130,10 +130,9 @@ function display(ll) {
 }
 
 function size(ll) {
-  if (!ll.head){
+  if (!ll.head) {
     console.log(0);
-  }
-  else {
+  } else {
     let count = 0;
     let current = ll.head;
     while (current !== null) {
@@ -142,11 +141,10 @@ function size(ll) {
     }
     console.log(count);
   }
-  
 }
 
-function isEmpty(ll){
-  if (!ll.head){
+function isEmpty(ll) {
+  if (!ll.head) {
     console.log(true);
   } else {
     console.log(false);
@@ -158,12 +156,11 @@ function findPrevious(ll, item) {
   if (!ll.head || !ll.head.next) {
     console.log(null);
   }
-    
+
   let previous = currentNode;
 
   while (currentNode.value !== item) {
     if (currentNode.next === null) {
-        
       console.log(null);
     } else {
       previous = currentNode;
@@ -178,15 +175,12 @@ function findLast(ll) {
   if (!ll.head) {
     console.log(null);
   }
-    
+
   let previous = currentNode;
 
   while (currentNode !== null) {
-    
-    
     previous = currentNode;
     currentNode = currentNode.next;
-    
   }
   console.log(previous);
 }
@@ -198,8 +192,7 @@ function removeDupes(lst) {
     while (newNode.next !== null) {
       if (newNode.next.value === current.value) {
         newNode.next = newNode.next.next;
-      }
-      else {
+      } else {
         newNode = newNode.next;
       }
     }
@@ -208,7 +201,6 @@ function removeDupes(lst) {
 }
 
 // This function has a runtime complexity of O(n^2).  It removes any & all duplicate node in the linked list.
-
 
 function reverseList(ll) {
   let reverseHead = null;
@@ -220,69 +212,75 @@ function reverseList(ll) {
     current = tempNode;
   }
   ll.head = reverseHead;
-  return ll; 
-  
+  return ll;
 }
 
-
-
-function thirdFromTheEnd (ll) {
+function thirdFromTheEnd(ll) {
   let thirdHead = ll.head;
   let end = ll.head.next.next;
-  while (end.next !== null){
+  while (end.next !== null) {
     thirdHead = thirdHead.next;
     end = end.next;
   }
   return thirdHead.value;
 }
 
-function middleNode(ll){
-  if (!ll.head){
+function middleNode(ll) {
+  if (!ll.head) {
     return null;
-  }
-  else {
+  } else {
     let count = 0;
     let current = ll.head;
     while (current !== null) {
       current = current.next;
       count++;
     }
-   current  = ll.head;
-   let halfway = Math.floor(count / 2);
-   while (halfway > 0) {
-     current = current.next;
-     halfway--;
-   }
-   return current;
+    current = ll.head;
+    let halfway = Math.floor(count / 2);
+    while (halfway > 0) {
+      current = current.next;
+      halfway--;
+    }
+    return current;
   }
- 
 }
 
-function cycleList (ll) {
-  if(!ll.head){
-    return null;
+function cycleList(ll) {
+  if (!ll.head) {
+    return false;
   }
-
+  let singleCurr = ll.head;
+  let doubleCurr = ll.head;
+  while (
+    singleCurr !== doubleCurr &&
+    singleCurr.next !== null &&
+    doubleCurr.next !== null
+  ) {
+    singleCurr = singleCurr.next;
+    doubleCurr = doubleCurr.next.next;
+    if (singleCurr === doubleCurr) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
-
-  
-
-
 
 function main() {
   let SLL = new LinkedList();
-  SLL.insertFirst('C');
-  SLL.insertLast('D');
-  SLL.insertLast('A');
-  SLL.insertLast('D');
-  SLL.insertLast('F');
+  SLL.insertFirst("C");
+  SLL.insertLast("D");
+  SLL.insertLast("A");
+  SLL.insertLast("D");
+  SLL.insertLast("F");
   let CycleList = new LinkedList();
-  // size(SLL);
-  // findPrevious(SLL,'F');
-  // findLast(SLL);
-  display(SLL);
+  CycleList
+    // size(SLL);
+    // findPrevious(SLL,'F');
+    // findLast(SLL);
+    .display(SLL);
   console.log(middleNode(SLL));
-  
+
   display(SLL);
   // removeDupes(SLL);
   // display(SLL);
