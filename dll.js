@@ -178,21 +178,31 @@ function reverseDLL(dll) {
 
 function main() {
   let dll = new DLL();
-  dll.insertLast("A");
+  dll.insertFirst("Aquaria");
+  dll.insertAt("Caprica", 1);
+  dll.insertAt("Gemenon", 2);
+  dll.insertAfter("Picon", "Gemenon");
+  dll.insertLast("Sagittaron");
   display(dll);
-  dll.insertAfter("B", "A");
-  dll.insertAfter("C", "B");
-  dll.insertFirst("Z");
-  dll.insertLast("Q");
-  console.log("after add");
+  console.log("Adding Tauron and Removing Picon");
+  dll.insertLast("Tauron");
+  dll.remove("Picon");
   display(dll);
-  console.log("testing insertAt(Y)");
-  dll.insertAt("Y", 5);
-  dll.remove("Q");
-  display(dll);
-  console.log("testing find");
-  console.log(dll.find("Y"));
-  console.log(reverseDLL(dll));
+  // dll.insertLast("A");
+  // display(dll);
+  // dll.insertAfter("B", "A");
+  // dll.insertAfter("C", "B");
+  // dll.insertFirst("Z");
+  // dll.insertLast("Q");
+  // console.log("after add");
+  // display(dll);
+  // console.log("testing insertAt(Y)");
+  // dll.insertAt("Y", 5);
+  // dll.remove("Q");
+  // display(dll);
+  // console.log("testing find");
+  // console.log(dll.find("Y"));
+  // console.log(reverseDLL(dll));
 }
 
 main();
