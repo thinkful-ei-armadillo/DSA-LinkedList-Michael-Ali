@@ -11,10 +11,11 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
-
+  // O(1)
   insertFirst(item) {
     this.head = new _Node(item, this.head);
   }
+  // O(n)
   insertBefore(item, key) {
     if (!this.head) {
       this.insertFirst(item);
@@ -26,6 +27,7 @@ class LinkedList {
       currentNode.next = new _Node(item, currentNode.next);
     }
   }
+  // O(n)
   insertAfter(item, key) {
     if (!this.head) {
       this.insertFirst(item);
@@ -37,7 +39,7 @@ class LinkedList {
       currentNode.next = new _Node(item, currentNode.next);
     }
   }
-
+  // O(n)
   insertLast(item) {
     if (!this.head) {
       this.insertFirst(item);
@@ -49,7 +51,7 @@ class LinkedList {
       currentNode.next = new _Node(item, null);
     }
   }
-
+  // O(n)
   insertAt(item, position) {
     if (position === 0) {
       this.insertFirst(item);
@@ -66,7 +68,7 @@ class LinkedList {
       previousNode.next = currentNode;
     }
   }
-
+  // O(n)
   remove(item) {
     if (!this.head) {
       return null;
@@ -89,6 +91,7 @@ class LinkedList {
     previousNode.next = currentNode.next;
     return;
   }
+  // O(n)
   find(item) {
     let currentNode = this.head;
     if (!this.head) {
@@ -105,6 +108,7 @@ class LinkedList {
     return currentNode;
   }
 }
+// O(n)
 function insertInSortedOrder(ll, item) {
   let currentNode = ll.head;
 
@@ -120,7 +124,7 @@ function insertInSortedOrder(ll, item) {
   previousNode.next = new _Node(item, currentNode);
   return ll;
 }
-
+// O(n)
 function display(ll) {
   let currentNode = ll.head;
   while (currentNode !== null) {
@@ -128,7 +132,7 @@ function display(ll) {
     currentNode = currentNode.next;
   }
 }
-
+// O(n)
 function size(ll) {
   if (!ll.head) {
     console.log(0);
@@ -142,7 +146,7 @@ function size(ll) {
     console.log(count);
   }
 }
-
+// O(1)
 function isEmpty(ll) {
   if (!ll.head) {
     console.log(true);
@@ -150,7 +154,7 @@ function isEmpty(ll) {
     console.log(false);
   }
 }
-
+// O(n)
 function findPrevious(ll, item) {
   let currentNode = ll.head;
   if (!ll.head || !ll.head.next) {
@@ -169,7 +173,7 @@ function findPrevious(ll, item) {
   }
   console.log(previous);
 }
-
+// O(n)
 function findLast(ll) {
   let currentNode = ll.head;
   if (!ll.head) {
@@ -184,7 +188,7 @@ function findLast(ll) {
   }
   console.log(previous);
 }
-
+// O(n!)
 function removeDupes(lst) {
   let current = lst.head;
   while (current !== null) {
@@ -200,8 +204,8 @@ function removeDupes(lst) {
   }
 }
 
-// This function has a runtime complexity of O(n^2).  It removes any & all duplicate node in the linked list.
-
+// It removes any & all duplicate node in the linked list.
+// O(n ^ 2)
 function reverseList(ll) {
   let reverseHead = null;
   let current = ll.head;
@@ -214,7 +218,7 @@ function reverseList(ll) {
   ll.head = reverseHead;
   return ll;
 }
-
+// O(n)
 function thirdFromTheEnd(ll) {
   let thirdHead = ll.head;
   let end = ll.head.next.next;
@@ -224,7 +228,7 @@ function thirdFromTheEnd(ll) {
   }
   return thirdHead.value;
 }
-
+// O(n)
 function middleNode(ll) {
   if (!ll.head) {
     return null;
@@ -244,7 +248,7 @@ function middleNode(ll) {
     return current;
   }
 }
-
+// O(n)
 function cycleList(ll) {
   if (!ll.head) {
     return false;
